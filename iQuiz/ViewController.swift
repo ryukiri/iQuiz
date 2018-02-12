@@ -40,6 +40,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
         cell.textLabel?.text = category.name
         cell.imageView?.image = UIImage(named: "nba.png")
+        cell.detailTextLabel?.text = "Test detail here."
         return cell
     }
     
