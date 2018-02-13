@@ -14,6 +14,8 @@
 		D93AD5A92029587800FF213F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D93AD5A72029587800FF213F /* LaunchScreen.storyboard */; };
 		D952A1B4203015B50017C22E /* QuizRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952A1B3203015B50017C22E /* QuizRepository.swift */; };
 		D95C2671203032E900975BCD /* nba.png in Resources */ = {isa = PBXBuildFile; fileRef = D95C2670203032E900975BCD /* nba.png */; };
+		D9DE794D20339F950016C508 /* NBAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DE794C20339F950016C508 /* NBAViewController.swift */; };
+		D9DE794F20339FCE0016C508 /* NBAAnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DE794E20339FCE0016C508 /* NBAAnswersViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		D93AD5AA2029587800FF213F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D952A1B3203015B50017C22E /* QuizRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRepository.swift; sourceTree = "<group>"; };
 		D95C2670203032E900975BCD /* nba.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nba.png; sourceTree = "<group>"; };
+		D9DE794C20339F950016C508 /* NBAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBAViewController.swift; sourceTree = "<group>"; };
+		D9DE794E20339FCE0016C508 /* NBAAnswersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBAAnswersViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				D93AD59E2029587800FF213F /* AppDelegate.swift */,
 				D93AD5A02029587800FF213F /* ViewController.swift */,
 				D93AD5A22029587800FF213F /* Main.storyboard */,
+				D9DE794E20339FCE0016C508 /* NBAAnswersViewController.swift */,
+				D9DE794C20339F950016C508 /* NBAViewController.swift */,
 				D93AD5A52029587800FF213F /* Assets.xcassets */,
 				D93AD5A72029587800FF213F /* LaunchScreen.storyboard */,
 				D93AD5AA2029587800FF213F /* Info.plist */,
@@ -145,7 +151,9 @@
 			files = (
 				D93AD5A12029587800FF213F /* ViewController.swift in Sources */,
 				D93AD59F2029587800FF213F /* AppDelegate.swift in Sources */,
+				D9DE794D20339F950016C508 /* NBAViewController.swift in Sources */,
 				D952A1B4203015B50017C22E /* QuizRepository.swift in Sources */,
+				D9DE794F20339FCE0016C508 /* NBAAnswersViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

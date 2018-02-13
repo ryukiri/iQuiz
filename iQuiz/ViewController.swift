@@ -49,6 +49,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         NSLog("User selected row at \(category.name)")
         
         let alert = UIAlertController(title: "You selected", message: category.name, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "OK",
+                                         style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        //self.present(alert, animated: true, completion: nil)
+        
+        if category.name == "NBA" {
+            NSLog("In NBA")
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "nbaQuestions")
+            self.present(vc!, animated: true, completion: nil)
+        }
+        
+    
     }
     
     @IBAction func settings(_ sender: Any) {
@@ -59,6 +71,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.present(alertController, animated: true, completion: nil)
     }
     
+
 
 }
 

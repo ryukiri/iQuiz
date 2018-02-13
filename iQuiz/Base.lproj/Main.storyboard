@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="home" id="BYZ-38-t0r" customClass="ViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,6 +91,86 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="141.59999999999999" y="133.5832083958021"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="hMt-lf-UlW">
+            <objects>
+                <viewController storyboardIdentifier="nbaQuestions" id="TCt-2D-Q6D" customClass="NBAViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s1W-BR-6wW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NBA Question 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xqh-ua-4IN">
+                                <rect key="frame" x="128" y="60" width="119.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tfR-ed-soV">
+                                <rect key="frame" x="20" y="273.5" width="335" height="120"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z8P-Fv-5fH">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4c-hA-rs3">
+                                        <rect key="frame" x="0.0" y="30" width="335" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmG-DM-txU">
+                                        <rect key="frame" x="0.0" y="60" width="335" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V40-OQ-6fF">
+                                        <rect key="frame" x="0.0" y="90" width="335" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="z8P-Fv-5fH" firstAttribute="top" secondItem="tfR-ed-soV" secondAttribute="top" constant="20" id="22f-uj-bvE"/>
+                                    <constraint firstItem="g4c-hA-rs3" firstAttribute="top" secondItem="z8P-Fv-5fH" secondAttribute="bottom" constant="20" id="toe-O0-wx1"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tfR-ed-soV" firstAttribute="centerX" secondItem="s1W-BR-6wW" secondAttribute="centerX" id="LQW-b5-pid"/>
+                            <constraint firstItem="tfR-ed-soV" firstAttribute="centerY" secondItem="s1W-BR-6wW" secondAttribute="centerY" id="QBZ-J7-T3Y"/>
+                            <constraint firstItem="CLx-Fs-3lW" firstAttribute="trailing" secondItem="tfR-ed-soV" secondAttribute="trailing" constant="20" id="QKQ-KS-92R"/>
+                            <constraint firstItem="xqh-ua-4IN" firstAttribute="top" secondItem="CLx-Fs-3lW" secondAttribute="top" constant="40" id="Tsg-X5-a2U"/>
+                            <constraint firstItem="xqh-ua-4IN" firstAttribute="centerX" secondItem="s1W-BR-6wW" secondAttribute="centerX" id="ZYC-p9-gOe"/>
+                            <constraint firstItem="tfR-ed-soV" firstAttribute="leading" secondItem="CLx-Fs-3lW" secondAttribute="leading" constant="20" id="dti-6u-kLV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CLx-Fs-3lW"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O5i-Fd-5SC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="885.60000000000002" y="133.5832083958021"/>
+        </scene>
+        <!--Answers View Controller-->
+        <scene sceneID="VtR-OG-7Gm">
+            <objects>
+                <viewController storyboardIdentifier="nbaAnswers" id="7MY-p9-rSa" customClass="NBAAnswersViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PUR-PT-sIK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NBA Answers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tub-8F-Dxj">
+                                <rect key="frame" x="135" y="236" width="104" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="fdT-Ee-PEv"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O8W-TF-cOs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1626" y="134"/>
         </scene>
     </scenes>
 </document>
