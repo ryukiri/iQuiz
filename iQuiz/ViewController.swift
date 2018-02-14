@@ -67,7 +67,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             self.category = "Science"
             self.present(myVC, animated: true, completion: nil)
         } else if category.name == "Music" {
-            NSLog("In Music")
+            NSLog("In Movies")
             let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaQuestions") as! NBAViewController
             myVC.category = "Music"
             self.category = "Music"
