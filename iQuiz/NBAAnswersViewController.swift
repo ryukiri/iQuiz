@@ -34,6 +34,7 @@ class NBAAnswersViewController: UIViewController {
     */
 
     var questionNumber : Int = Int()
+    var category : String = String()
     
     @IBAction func next(_ sender: Any) {
         questionNumber = questionNumber + 1
@@ -41,6 +42,7 @@ class NBAAnswersViewController: UIViewController {
         
         let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaQuestions") as! NBAViewController
         myVC.questionNumber = questionNumber
+        myVC.category = category
         self.present(myVC, animated: true, completion: nil)
     }
     

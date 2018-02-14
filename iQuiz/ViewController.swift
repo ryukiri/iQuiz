@@ -13,6 +13,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var tblQuizCategories: UITableView!
     let categoryRepo = QuizRepository.shared
     var categories : [Category]? = nil
+    var category : String = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +57,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         if category.name == "NBA" {
             NSLog("In NBA")
+            //let vc = self.storyboard?.instantiateViewController(withIdentifier: "nbaQuestions")
+            //self.present(vc!, animated: true, completion: nil)
+            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaQuestions") as! NBAViewController
+            myVC.category = "NBA"
+            self.category = "NBA"
+            self.present(myVC, animated: true, completion: nil)
+        } else if category.name == "Science" {
+            NSLog("In Science")
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "nbaQuestions")
+            self.present(vc!, animated: true, completion: nil)
+        } else if category.name == "Music" {
+            NSLog("In Music")
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "nbaQuestions")
+            self.present(vc!, animated: true, completion: nil)
+        } else if category.name == "Mathematics" {
+            NSLog("In Mathematics")
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "nbaQuestions")
             self.present(vc!, animated: true, completion: nil)
         }
