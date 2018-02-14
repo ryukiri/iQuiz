@@ -15,8 +15,13 @@ class NBAViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         nbaQuestions = (UIApplication.shared.delegate as! AppDelegate).nbaRepository.getQuestions()
-        let question = nbaQuestions![questionNumber]
-        QuestionLabel.text = question.name
+        var question = nbaQuestions![0]
+        if (questionNumber < (nbaQuestions?.count)!) {
+            question = nbaQuestions![questionNumber]
+            QuestionLabel.text = question.name
+        } else {
+            QuestionLabel.text = ""
+        }
         loadAnswerChoices()
         loadCorrectAnswers()
     }
@@ -61,8 +66,9 @@ class NBAViewController: UIViewController {
     @IBAction func button2Action(_ sender: Any) {
         if correctAnswer == 2 {
             NSLog("You are correct.")
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "nbaAnswers")
-            self.present(vc!, animated: true, completion: nil)
+            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaAnswers") as! NBAAnswersViewController
+            myVC.questionNumber = questionNumber
+            self.present(myVC, animated: true, completion: nil)
         } else {
             
         }
@@ -71,8 +77,9 @@ class NBAViewController: UIViewController {
     @IBAction func button3Action(_ sender: Any) {
         if correctAnswer == 3 {
             NSLog("You are correct.")
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "nbaAnswers")
-            self.present(vc!, animated: true, completion: nil)
+            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaAnswers") as! NBAAnswersViewController
+            myVC.questionNumber = questionNumber
+            self.present(myVC, animated: true, completion: nil)
         } else {
             
         }
@@ -81,10 +88,12 @@ class NBAViewController: UIViewController {
     @IBAction func button4Action(_ sender: Any) {
         if correctAnswer == 4 {
             NSLog("You are correct.")
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "nbaAnswers")
-            self.present(vc!, animated: true, completion: nil)
+            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaAnswers") as! NBAAnswersViewController
+            myVC.questionNumber = questionNumber
+            self.present(myVC, animated: true, completion: nil)
         } else {
-            
+            let myVC = storyboard?.instantiateViewController(withIdentifier: "home") as! ViewController
+            self.present(myVC, animated: true, completion: nil)
         }
     }
     
@@ -103,13 +112,36 @@ class NBAViewController: UIViewController {
             button3.setTitle("32.6", for: .normal)
             button4.setTitle("36.2", for: .normal)
         case 2:
-            print("Answer 1")
+            button1.setTitle("Stephen Curry", for: .normal)
+            button2.setTitle("Kobe Bryant", for: .normal)
+            button3.setTitle("Ray Allen", for: .normal)
+            button4.setTitle("Steve Nash", for: .normal)
         case 3:
-            print("Answer 1")
+            button1.setTitle("16", for: .normal)
+            button2.setTitle("12", for: .normal)
+            button3.setTitle("15", for: .normal)
+            button4.setTitle("18", for: .normal)
         case 4:
-            print("Answer 1")
+            button1.setTitle("Markelle Fultz. Phoenix Suns.", for: .normal)
+            button2.setTitle("Markelle Fultz. Minnesota Timberwolves.", for: .normal)
+            button3.setTitle("Markelle Fultz. Boston Celtics.", for: .normal)
+            button4.setTitle("Markelle Fultz. Philidephia 76ers.", for: .normal)
+        case 5:
+            button1.setTitle("Lebron James. 20 years, 10 days.", for: .normal)
+            button2.setTitle("Lonzo Ball. 20 years, 15 days.", for: .normal)
+            button3.setTitle("Magic Johnson. 19 years, 289 days.", for: .normal)
+            button4.setTitle("Kobe Bryant. 18 years, 343 days.", for: .normal)
         default:
-            print("Default")
+            /*button1.setTitle("", for: .normal)
+            button2.setTitle("", for: .normal)
+            button3.setTitle("", for: .normal)
+            button4.setTitle("", for: .normal)*/
+            QuestionLabel.text = "Game ended."
+            questionNumber = 0
+            button1.isHidden = true
+            button2.isHidden = true
+            button3.isHidden = true
+            button4.setTitle("Start Over", for: .normal)
         }
     }
     
@@ -120,13 +152,15 @@ class NBAViewController: UIViewController {
         case 1:
             correctAnswer = 1
         case 2:
-            print("Answer 1")
+            correctAnswer = 4
         case 3:
-            print("Answer 1")
+            correctAnswer = 1
         case 4:
-            print("Answer 1")
+            correctAnswer = 4
+        case 5:
+            correctAnswer = 2
         default:
-            print("Default")
+            correctAnswer = 5
         }
     }
     
