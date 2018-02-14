@@ -53,29 +53,32 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cancelAction = UIAlertAction(title: "OK",
                                          style: .cancel, handler: nil)
         alert.addAction(cancelAction)
-        //self.present(alert, animated: true, completion: nil)
         
         if category.name == "NBA" {
             NSLog("In NBA")
-            //let vc = self.storyboard?.instantiateViewController(withIdentifier: "nbaQuestions")
-            //self.present(vc!, animated: true, completion: nil)
             let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaQuestions") as! NBAViewController
             myVC.category = "NBA"
             self.category = "NBA"
             self.present(myVC, animated: true, completion: nil)
         } else if category.name == "Science" {
             NSLog("In Science")
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "nbaQuestions")
-            self.present(vc!, animated: true, completion: nil)
+            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaQuestions") as! NBAViewController
+            myVC.category = "Science"
+            self.category = "Science"
+            self.present(myVC, animated: true, completion: nil)
         } else if category.name == "Music" {
             NSLog("In Music")
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "nbaQuestions")
-            self.present(vc!, animated: true, completion: nil)
-        } else if category.name == "Mathematics" {
-            NSLog("In Mathematics")
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "nbaQuestions")
-            self.present(vc!, animated: true, completion: nil)
-        }
+            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaQuestions") as! NBAViewController
+            myVC.category = "Music"
+            self.category = "Music"
+            self.present(myVC, animated: true, completion: nil)
+        } else if category.name == "Movies" {
+            NSLog("In Movies")
+            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaQuestions") as! NBAViewController
+            myVC.category = "Movies"
+            self.category = "Movies"
+            self.present(myVC, animated: true, completion: nil)
+        } 
     }
     
     @IBAction func settings(_ sender: Any) {

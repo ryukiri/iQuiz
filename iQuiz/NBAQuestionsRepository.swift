@@ -8,12 +8,6 @@
 
 import Foundation
 
-class Questions {
-    init(name : String) {
-        self.name = name
-    }
-    var name = ""
-}
 
 class NBARepository {
     static let shared = NBARepository()

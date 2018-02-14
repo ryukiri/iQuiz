@@ -38,7 +38,6 @@ class NBAAnswersViewController: UIViewController {
     
     @IBAction func next(_ sender: Any) {
         questionNumber = questionNumber + 1
-        print(questionNumber)
         
         let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaQuestions") as! NBAViewController
         myVC.questionNumber = questionNumber

@@ -14,6 +14,10 @@
 		D93AD5A92029587800FF213F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D93AD5A72029587800FF213F /* LaunchScreen.storyboard */; };
 		D952A1B4203015B50017C22E /* QuizRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952A1B3203015B50017C22E /* QuizRepository.swift */; };
 		D95C2671203032E900975BCD /* nba.png in Resources */ = {isa = PBXBuildFile; fileRef = D95C2670203032E900975BCD /* nba.png */; };
+		D9ACBB372034CEC10016A595 /* MovieQuestionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ACBB362034CEC10016A595 /* MovieQuestionsRepository.swift */; };
+		D9ACBB392034CF8D0016A595 /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ACBB382034CF8D0016A595 /* Questions.swift */; };
+		D9ACBB3B2034D4270016A595 /* MusicQuestionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ACBB3A2034D4270016A595 /* MusicQuestionsRepository.swift */; };
+		D9ACBB3D2034DAAF0016A595 /* scienceQuestionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ACBB3C2034DAAF0016A595 /* scienceQuestionsRepository.swift */; };
 		D9DE794D20339F950016C508 /* NBAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DE794C20339F950016C508 /* NBAViewController.swift */; };
 		D9DE794F20339FCE0016C508 /* NBAAnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DE794E20339FCE0016C508 /* NBAAnswersViewController.swift */; };
 		D9DE79512033B5AB0016C508 /* NBAQuestionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DE79502033B5AB0016C508 /* NBAQuestionsRepository.swift */; };
@@ -29,6 +33,10 @@
 		D93AD5AA2029587800FF213F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D952A1B3203015B50017C22E /* QuizRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRepository.swift; sourceTree = "<group>"; };
 		D95C2670203032E900975BCD /* nba.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nba.png; sourceTree = "<group>"; };
+		D9ACBB362034CEC10016A595 /* MovieQuestionsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuestionsRepository.swift; sourceTree = "<group>"; };
+		D9ACBB382034CF8D0016A595 /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
+		D9ACBB3A2034D4270016A595 /* MusicQuestionsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicQuestionsRepository.swift; sourceTree = "<group>"; };
+		D9ACBB3C2034DAAF0016A595 /* scienceQuestionsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scienceQuestionsRepository.swift; sourceTree = "<group>"; };
 		D9DE794C20339F950016C508 /* NBAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBAViewController.swift; sourceTree = "<group>"; };
 		D9DE794E20339FCE0016C508 /* NBAAnswersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBAAnswersViewController.swift; sourceTree = "<group>"; };
 		D9DE79502033B5AB0016C508 /* NBAQuestionsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBAQuestionsRepository.swift; sourceTree = "<group>"; };
@@ -64,11 +72,15 @@
 		D93AD59D2029587800FF213F /* iQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				D9ACBB3C2034DAAF0016A595 /* scienceQuestionsRepository.swift */,
 				D95C2670203032E900975BCD /* nba.png */,
+				D9ACBB3A2034D4270016A595 /* MusicQuestionsRepository.swift */,
 				D952A1B3203015B50017C22E /* QuizRepository.swift */,
+				D9ACBB362034CEC10016A595 /* MovieQuestionsRepository.swift */,
 				D9DE79502033B5AB0016C508 /* NBAQuestionsRepository.swift */,
 				D93AD59E2029587800FF213F /* AppDelegate.swift */,
 				D93AD5A02029587800FF213F /* ViewController.swift */,
+				D9ACBB382034CF8D0016A595 /* Questions.swift */,
 				D93AD5A22029587800FF213F /* Main.storyboard */,
 				D9DE794E20339FCE0016C508 /* NBAAnswersViewController.swift */,
 				D9DE794C20339F950016C508 /* NBAViewController.swift */,
@@ -153,9 +165,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D93AD5A12029587800FF213F /* ViewController.swift in Sources */,
+				D9ACBB3B2034D4270016A595 /* MusicQuestionsRepository.swift in Sources */,
 				D93AD59F2029587800FF213F /* AppDelegate.swift in Sources */,
 				D9DE794D20339F950016C508 /* NBAViewController.swift in Sources */,
+				D9ACBB3D2034DAAF0016A595 /* scienceQuestionsRepository.swift in Sources */,
 				D952A1B4203015B50017C22E /* QuizRepository.swift in Sources */,
+				D9ACBB372034CEC10016A595 /* MovieQuestionsRepository.swift in Sources */,
+				D9ACBB392034CF8D0016A595 /* Questions.swift in Sources */,
 				D9DE794F20339FCE0016C508 /* NBAAnswersViewController.swift in Sources */,
 				D9DE79512033B5AB0016C508 /* NBAQuestionsRepository.swift in Sources */,
 			);

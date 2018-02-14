@@ -15,7 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let categoryRepository = QuizRepository()
     let nbaRepository = NBARepository()
-
+    let movieRepository = MovieRepository()
+    let musicRepository = MusicRepository()
+    let scienceRepository = ScienceRepository()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true

@@ -24,6 +24,33 @@ class NBAViewController: UIViewController {
             } else {
                 QuestionLabel.text = ""
             }
+        } else if category == "Movies" {
+            nbaQuestions = (UIApplication.shared.delegate as! AppDelegate).movieRepository.getQuestions()
+            var question = nbaQuestions![0]
+            if (questionNumber < (nbaQuestions?.count)!) {
+                question = nbaQuestions![questionNumber]
+                QuestionLabel.text = question.name
+            } else {
+                QuestionLabel.text = ""
+            }
+        } else if category == "Music" {
+            nbaQuestions = (UIApplication.shared.delegate as! AppDelegate).musicRepository.getQuestions()
+            var question = nbaQuestions![0]
+            if (questionNumber < (nbaQuestions?.count)!) {
+                question = nbaQuestions![questionNumber]
+                QuestionLabel.text = question.name
+            } else {
+                QuestionLabel.text = ""
+            }
+        } else if category == "Science" {
+            nbaQuestions = (UIApplication.shared.delegate as! AppDelegate).scienceRepository.getQuestions()
+            var question = nbaQuestions![0]
+            if (questionNumber < (nbaQuestions?.count)!) {
+                question = nbaQuestions![questionNumber]
+                QuestionLabel.text = question.name
+            } else {
+                QuestionLabel.text = ""
+            }
         }
         
         loadAnswerChoices()
@@ -107,8 +134,6 @@ class NBAViewController: UIViewController {
     }
     
     func loadAnswerChoices() {
-        //NSLog(questionNumber)
-        //print(questionNumber)
         if category == "NBA" {
             switch questionNumber {
             case 0:
@@ -142,10 +167,126 @@ class NBAViewController: UIViewController {
                 button3.setTitle("Magic Johnson. 19 years, 289 days.", for: .normal)
                 button4.setTitle("Kobe Bryant. 18 years, 343 days.", for: .normal)
             default:
-                /*button1.setTitle("", for: .normal)
-                 button2.setTitle("", for: .normal)
-                 button3.setTitle("", for: .normal)
-                 button4.setTitle("", for: .normal)*/
+                QuestionLabel.text = "Game ended."
+                questionNumber = 0
+                button1.isHidden = true
+                button2.isHidden = true
+                button3.isHidden = true
+                button4.setTitle("Start Over", for: .normal)
+            }
+        } else if category == "Movies" {
+            switch questionNumber {
+            case 0:
+                button1.setTitle("Over 6 million", for: .normal)
+                button2.setTitle("4", for: .normal)
+                button3.setTitle("Roughly 12 million", for: .normal)
+                button4.setTitle("8 million", for: .normal)
+            case 1:
+                button1.setTitle("Grand Moff Tarkin", for: .normal)
+                button2.setTitle("Admiral Motti", for: .normal)
+                button3.setTitle("Grand Admiral Thrawn", for: .normal)
+                button4.setTitle("Orson Krennic", for: .normal)
+            case 2:
+                button1.setTitle("Hopper", for: .normal)
+                button2.setTitle("Jumper", for: .normal)
+                button3.setTitle("Thumper", for: .normal)
+                button4.setTitle("Humper", for: .normal)
+            case 3:
+                button1.setTitle("Heels", for: .normal)
+                button2.setTitle("Boots", for: .normal)
+                button3.setTitle("Sandals", for: .normal)
+                button4.setTitle("Sneakers", for: .normal)
+            case 4:
+                button1.setTitle("He's on a trip.", for: .normal)
+                button2.setTitle("He died.", for: .normal)
+                button3.setTitle("He left the family.", for: .normal)
+                button4.setTitle("He is in the army.", for: .normal)
+            case 5:
+                button1.setTitle("Maui.", for: .normal)
+                button2.setTitle("Gramma Tala.", for: .normal)
+                button3.setTitle("Chief Tui.", for: .normal)
+                button4.setTitle("Moana.", for: .normal)
+            default:
+                QuestionLabel.text = "Game ended."
+                questionNumber = 0
+                button1.isHidden = true
+                button2.isHidden = true
+                button3.isHidden = true
+                button4.setTitle("Start Over", for: .normal)
+            }
+        } else if category == "Music" {
+            switch questionNumber {
+            case 0:
+                button1.setTitle("J-Hope", for: .normal)
+                button2.setTitle("V", for: .normal)
+                button3.setTitle("Suga", for: .normal)
+                button4.setTitle("RM", for: .normal)
+            case 1:
+                button1.setTitle("Ordinary Life", for: .normal)
+                button2.setTitle("False Alarm", for: .normal)
+                button3.setTitle("Attention", for: .normal)
+                button4.setTitle("There is no 14th song.", for: .normal)
+            case 2:
+                button1.setTitle("Seattle", for: .normal)
+                button2.setTitle("Washington DC", for: .normal)
+                button3.setTitle("Chicago", for: .normal)
+                button4.setTitle("Los Angeles", for: .normal)
+            case 3:
+                button1.setTitle("Illenium", for: .normal)
+                button2.setTitle("Marshmello", for: .normal)
+                button3.setTitle("Porter Robinson", for: .normal)
+                button4.setTitle("Tritonal", for: .normal)
+            case 4:
+                button1.setTitle("15", for: .normal)
+                button2.setTitle("8", for: .normal)
+                button3.setTitle("13", for: .normal)
+                button4.setTitle("11", for: .normal)
+            case 5:
+                button1.setTitle("Variation IX", for: .normal)
+                button2.setTitle("Variation I", for: .normal)
+                button3.setTitle("Variation XI", for: .normal)
+                button4.setTitle("Variation XII", for: .normal)
+            default:
+                QuestionLabel.text = "Game ended."
+                questionNumber = 0
+                button1.isHidden = true
+                button2.isHidden = true
+                button3.isHidden = true
+                button4.setTitle("Start Over", for: .normal)
+            }
+        } else if category == "Science" {
+            switch questionNumber {
+            case 0:
+                button1.setTitle("Both transverse and longitudinal", for: .normal)
+                button2.setTitle("Transverse", for: .normal)
+                button3.setTitle("Longitudinal", for: .normal)
+                button4.setTitle("Neither", for: .normal)
+            case 1:
+                button1.setTitle("Refraction", for: .normal)
+                button2.setTitle("Reflection", for: .normal)
+                button3.setTitle("Diffraction", for: .normal)
+                button4.setTitle("None of the above", for: .normal)
+            case 2:
+                button1.setTitle("30 mins", for: .normal)
+                button2.setTitle("20 mins", for: .normal)
+                button3.setTitle("15 mins", for: .normal)
+                button4.setTitle("An hour", for: .normal)
+            case 3:
+                button1.setTitle("12 years", for: .normal)
+                button2.setTitle("9 years", for: .normal)
+                button3.setTitle("14 years", for: .normal)
+                button4.setTitle("None of the above", for: .normal)
+            case 4:
+                button1.setTitle("Mitochondria", for: .normal)
+                button2.setTitle("Nucleus", for: .normal)
+                button3.setTitle("Chloroplasts", for: .normal)
+                button4.setTitle("Endoplasmic reticulum", for: .normal)
+            case 5:
+                button1.setTitle("Around 356 100 km away", for: .normal)
+                button2.setTitle("Around 376 600 km away", for: .normal)
+                button3.setTitle("Around 378 200 km away", for: .normal)
+                button4.setTitle("Around 372 700 km away", for: .normal)
+            default:
                 QuestionLabel.text = "Game ended."
                 questionNumber = 0
                 button1.isHidden = true
@@ -170,6 +311,57 @@ class NBAViewController: UIViewController {
                 correctAnswer = 1
             case 4:
                 correctAnswer = 4
+            case 5:
+                correctAnswer = 2
+            default:
+                correctAnswer = 5
+            }
+        } else if category == "Movies" {
+            switch questionNumber {
+            case 0:
+                correctAnswer = 1
+            case 1:
+                correctAnswer = 1
+            case 2:
+                correctAnswer = 3
+            case 3:
+                correctAnswer = 2
+            case 4:
+                correctAnswer = 2
+            case 5:
+                correctAnswer = 2
+            default:
+                correctAnswer = 5
+            }
+        } else if category == "Music" {
+            switch questionNumber {
+            case 0:
+                correctAnswer = 4
+            case 1:
+                correctAnswer = 1
+            case 2:
+                correctAnswer = 2
+            case 3:
+                correctAnswer = 4
+            case 4:
+                correctAnswer = 4
+            case 5:
+                correctAnswer = 3
+            default:
+                correctAnswer = 5
+            }
+        } else if category == "Science" {
+            switch questionNumber {
+            case 0:
+                correctAnswer = 1
+            case 1:
+                correctAnswer = 1
+            case 2:
+                correctAnswer = 2
+            case 3:
+                correctAnswer = 2
+            case 4:
+                correctAnswer = 3
             case 5:
                 correctAnswer = 2
             default:

@@ -27,7 +27,7 @@ class QuizRepository {
         Category(name: "NBA"),
         Category(name: "Science"),
         Category(name: "Music"),
-        Category(name: "Mathematics")
+        Category(name: "Movies")
     ]
     
     func getCategories() -> [Category] {
