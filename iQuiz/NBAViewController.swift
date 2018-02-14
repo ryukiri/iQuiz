@@ -217,35 +217,35 @@ class NBAViewController: UIViewController {
         } else if category == "Music" {
             switch questionNumber {
             case 0:
-                button1.setTitle("Over 6 million", for: .normal)
-                button2.setTitle("4", for: .normal)
-                button3.setTitle("Roughly 12 million", for: .normal)
-                button4.setTitle("8 million", for: .normal)
+                button1.setTitle("J-Hope", for: .normal)
+                button2.setTitle("V", for: .normal)
+                button3.setTitle("RM", for: .normal)
+                button4.setTitle("Suga", for: .normal)
             case 1:
-                button1.setTitle("Grand Moff Tarkin", for: .normal)
-                button2.setTitle("Admiral Motti", for: .normal)
-                button3.setTitle("Grand Admiral Thrawn", for: .normal)
-                button4.setTitle("Orson Krennic", for: .normal)
+                button1.setTitle("Ordinary Life", for: .normal)
+                button2.setTitle("False Alarm", for: .normal)
+                button3.setTitle("Attention", for: .normal)
+                button4.setTitle("There is no 14th song.", for: .normal)
             case 2:
-                button1.setTitle("Hopper", for: .normal)
-                button2.setTitle("Jumper", for: .normal)
-                button3.setTitle("Thumper", for: .normal)
-                button4.setTitle("Humper", for: .normal)
+                button1.setTitle("Seattle", for: .normal)
+                button2.setTitle("Washington DC", for: .normal)
+                button3.setTitle("Chicago", for: .normal)
+                button4.setTitle("Los Angeles", for: .normal)
             case 3:
-                button1.setTitle("Heels", for: .normal)
-                button2.setTitle("Boots", for: .normal)
-                button3.setTitle("Sandals", for: .normal)
-                button4.setTitle("Sneakers", for: .normal)
+                button1.setTitle("Illenium", for: .normal)
+                button2.setTitle("Marshmello", for: .normal)
+                button3.setTitle("Porter Robinson", for: .normal)
+                button4.setTitle("Tritonal", for: .normal)
             case 4:
-                button1.setTitle("He's on a trip.", for: .normal)
-                button2.setTitle("He died.", for: .normal)
-                button3.setTitle("He left the family.", for: .normal)
-                button4.setTitle("He is in the army.", for: .normal)
+                button1.setTitle("15", for: .normal)
+                button2.setTitle("8", for: .normal)
+                button3.setTitle("13", for: .normal)
+                button4.setTitle("11", for: .normal)
             case 5:
-                button1.setTitle("Maui.", for: .normal)
-                button2.setTitle("Gramma Tala.", for: .normal)
-                button3.setTitle("Chief Tui.", for: .normal)
-                button4.setTitle("Moana.", for: .normal)
+                button1.setTitle("Variation IX", for: .normal)
+                button2.setTitle("Variation I", for: .normal)
+                button3.setTitle("Variation XI", for: .normal)
+                button4.setTitle("Variation XII", for: .normal)
             default:
                 QuestionLabel.text = "Game ended."
                 questionNumber = 0
@@ -336,17 +336,17 @@ class NBAViewController: UIViewController {
         } else if category == "Music" {
             switch questionNumber {
             case 0:
-                correctAnswer = 1
+                correctAnswer = 3
             case 1:
                 correctAnswer = 1
             case 2:
-                correctAnswer = 3
+                correctAnswer = 2
             case 3:
-                correctAnswer = 2
+                correctAnswer = 4
             case 4:
-                correctAnswer = 2
+                correctAnswer = 4
             case 5:
-                correctAnswer = 2
+                correctAnswer = 3
             default:
                 correctAnswer = 5
             }
