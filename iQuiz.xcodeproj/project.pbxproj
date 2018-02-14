@@ -16,6 +16,7 @@
 		D95C2671203032E900975BCD /* nba.png in Resources */ = {isa = PBXBuildFile; fileRef = D95C2670203032E900975BCD /* nba.png */; };
 		D9DE794D20339F950016C508 /* NBAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DE794C20339F950016C508 /* NBAViewController.swift */; };
 		D9DE794F20339FCE0016C508 /* NBAAnswersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DE794E20339FCE0016C508 /* NBAAnswersViewController.swift */; };
+		D9DE79512033B5AB0016C508 /* NBAQuestionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DE79502033B5AB0016C508 /* NBAQuestionsRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		D95C2670203032E900975BCD /* nba.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nba.png; sourceTree = "<group>"; };
 		D9DE794C20339F950016C508 /* NBAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBAViewController.swift; sourceTree = "<group>"; };
 		D9DE794E20339FCE0016C508 /* NBAAnswersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBAAnswersViewController.swift; sourceTree = "<group>"; };
+		D9DE79502033B5AB0016C508 /* NBAQuestionsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBAQuestionsRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			children = (
 				D95C2670203032E900975BCD /* nba.png */,
 				D952A1B3203015B50017C22E /* QuizRepository.swift */,
+				D9DE79502033B5AB0016C508 /* NBAQuestionsRepository.swift */,
 				D93AD59E2029587800FF213F /* AppDelegate.swift */,
 				D93AD5A02029587800FF213F /* ViewController.swift */,
 				D93AD5A22029587800FF213F /* Main.storyboard */,
@@ -154,6 +157,7 @@
 				D9DE794D20339F950016C508 /* NBAViewController.swift in Sources */,
 				D952A1B4203015B50017C22E /* QuizRepository.swift in Sources */,
 				D9DE794F20339FCE0016C508 /* NBAAnswersViewController.swift in Sources */,
+				D9DE79512033B5AB0016C508 /* NBAQuestionsRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
