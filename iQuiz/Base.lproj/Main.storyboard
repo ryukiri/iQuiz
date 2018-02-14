@@ -146,10 +146,6 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="z8P-Fv-5fH" firstAttribute="top" secondItem="tfR-ed-soV" secondAttribute="top" constant="20" id="22f-uj-bvE"/>
-                                    <constraint firstItem="g4c-hA-rs3" firstAttribute="top" secondItem="z8P-Fv-5fH" secondAttribute="bottom" constant="20" id="toe-O0-wx1"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -194,6 +190,9 @@
                                 <rect key="frame" x="320" y="617" width="32" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="next:" destination="7MY-p9-rSa" eventType="touchUpInside" id="Rzw-yY-W1d"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -31,7 +31,8 @@ class NBAViewController: UIViewController {
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var button4: UIButton!
-    var questionNumber = 0;
+    //var questionNumber = Int()
+    var questionNumber : Int = Int()
     let nbaQuestionRepo = NBARepository.shared
     var nbaQuestions : [Questions]? = nil
     var correctAnswer = 1;
@@ -49,8 +50,9 @@ class NBAViewController: UIViewController {
     @IBAction func button1Action(_ sender: Any) {
         if correctAnswer == 1 {
             NSLog("You are correct.")
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "nbaAnswers")
-            self.present(vc!, animated: true, completion: nil)
+            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaAnswers") as! NBAAnswersViewController
+            myVC.questionNumber = questionNumber
+            self.present(myVC, animated: true, completion: nil)
         } else {
             
         }
@@ -87,6 +89,8 @@ class NBAViewController: UIViewController {
     }
     
     func loadAnswerChoices() {
+        //NSLog(questionNumber)
+        //print(questionNumber)
         switch questionNumber {
         case 0:
             button1.setTitle("Kevin Durant", for: .normal)
@@ -126,5 +130,9 @@ class NBAViewController: UIViewController {
         }
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var vc2 = segue.destination as! NBAAnswersViewController
+        questionNumber = questionNumber + 1
+        vc2.questionNumber = questionNumber
+    }
 }

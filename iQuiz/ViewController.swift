@@ -59,8 +59,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "nbaQuestions")
             self.present(vc!, animated: true, completion: nil)
         }
-        
-    
     }
     
     @IBAction func settings(_ sender: Any) {
@@ -70,8 +68,5 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
     }
-    
-
-
 }
 

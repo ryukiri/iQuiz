@@ -14,6 +14,7 @@ class NBAAnswersViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        //print(questionNumber)
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,4 +33,19 @@ class NBAAnswersViewController: UIViewController {
     }
     */
 
+    var questionNumber : Int = Int()
+    
+    @IBAction func next(_ sender: Any) {
+        questionNumber = questionNumber + 1
+        print(questionNumber)
+        
+        let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaQuestions") as! NBAViewController
+        myVC.questionNumber = questionNumber
+        self.present(myVC, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var vc = segue.destination as! NBAViewController
+        vc.questionNumber = questionNumber
+    }
 }
