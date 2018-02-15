@@ -14,7 +14,8 @@ class NBAAnswersViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        //print(questionNumber)
+        label.text = labelText
+        numberRight.text = "\(String(correct)) / \(String(questionNumber+1))"
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,6 +36,10 @@ class NBAAnswersViewController: UIViewController {
 
     var questionNumber : Int = Int()
     var category : String = String()
+    @IBOutlet weak var label: UILabel!
+    var labelText : String = String()
+    @IBOutlet weak var numberRight: UILabel!
+    var correct : Int = Int()
     
     @IBAction func next(_ sender: Any) {
         questionNumber = questionNumber + 1
@@ -42,6 +47,7 @@ class NBAAnswersViewController: UIViewController {
         let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaQuestions") as! NBAViewController
         myVC.questionNumber = questionNumber
         myVC.category = category
+        myVC.correct = correct
         self.present(myVC, animated: true, completion: nil)
     }
     

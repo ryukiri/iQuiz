@@ -14,6 +14,8 @@ class NBAViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        QuestionLabel.lineBreakMode = .byWordWrapping
+        QuestionLabel.numberOfLines = 0
         
         if category == "NBA" {
             nbaQuestions = (UIApplication.shared.delegate as! AppDelegate).nbaRepository.getQuestions()
@@ -62,17 +64,20 @@ class NBAViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var QuestionLabel: UILabel!
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var button4: UIButton!
+    @IBOutlet weak var button5: UIButton!
     //var questionNumber = Int()
     var questionNumber : Int = Int()
     let nbaQuestionRepo = NBARepository.shared
     var nbaQuestions : [Questions]? = nil
     var correctAnswer = 1;
     var category : String = String()
+    var correct = 0;
     
     /*
     // MARK: - Navigation
@@ -88,11 +93,20 @@ class NBAViewController: UIViewController {
         if correctAnswer == 1 {
             NSLog("You are correct.")
             let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaAnswers") as! NBAAnswersViewController
+            correct += 1
+            myVC.correct = correct
             myVC.questionNumber = questionNumber
             myVC.category = category
+            myVC.labelText = "Correct"
             self.present(myVC, animated: true, completion: nil)
         } else {
-            
+            NSLog("You are not correct.")
+            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaAnswers") as! NBAAnswersViewController
+            myVC.questionNumber = questionNumber
+            myVC.correct = correct
+            myVC.category = category
+            myVC.labelText = "Incorrect"
+            self.present(myVC, animated: true, completion: nil)
         }
     }
     
@@ -100,11 +114,20 @@ class NBAViewController: UIViewController {
         if correctAnswer == 2 {
             NSLog("You are correct.")
             let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaAnswers") as! NBAAnswersViewController
+            correct += 1
+            myVC.correct = correct
             myVC.questionNumber = questionNumber
             myVC.category = category
+            myVC.labelText = "Correct"
             self.present(myVC, animated: true, completion: nil)
         } else {
-            
+            NSLog("You are not correct.")
+            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaAnswers") as! NBAAnswersViewController
+            myVC.questionNumber = questionNumber
+            myVC.correct = correct
+            myVC.category = category
+            myVC.labelText = "Incorrect"
+            self.present(myVC, animated: true, completion: nil)
         }
     }
     
@@ -112,11 +135,20 @@ class NBAViewController: UIViewController {
         if correctAnswer == 3 {
             NSLog("You are correct.")
             let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaAnswers") as! NBAAnswersViewController
+            correct += 1
+            myVC.correct = correct
             myVC.questionNumber = questionNumber
             myVC.category = category
+            myVC.labelText = "Correct"
             self.present(myVC, animated: true, completion: nil)
         } else {
-            
+            NSLog("You are not correct.")
+            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaAnswers") as! NBAAnswersViewController
+            myVC.questionNumber = questionNumber
+            myVC.category = category
+            myVC.correct = correct
+            myVC.labelText = "Incorrect"
+            self.present(myVC, animated: true, completion: nil)
         }
     }
     
@@ -124,14 +156,28 @@ class NBAViewController: UIViewController {
         if correctAnswer == 4 {
             NSLog("You are correct.")
             let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaAnswers") as! NBAAnswersViewController
+            correct += 1
+            myVC.correct = correct
             myVC.questionNumber = questionNumber
             myVC.category = category
+            myVC.labelText = "Correct"
             self.present(myVC, animated: true, completion: nil)
         } else {
-            let myVC = storyboard?.instantiateViewController(withIdentifier: "home") as! ViewController
+            NSLog("You are not correct.")
+            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaAnswers") as! NBAAnswersViewController
+            myVC.questionNumber = questionNumber
+            myVC.category = category
+            myVC.correct = correct
+            myVC.labelText = "Incorrect"
             self.present(myVC, animated: true, completion: nil)
         }
     }
+    
+    @IBAction func button5Action(_ sender: Any) {
+        let myVC = storyboard?.instantiateViewController(withIdentifier: "home") as! ViewController
+        self.present(myVC, animated: true, completion: nil)
+    }
+    
     
     func loadAnswerChoices() {
         if category == "NBA" {
@@ -168,11 +214,15 @@ class NBAViewController: UIViewController {
                 button4.setTitle("Kobe Bryant. 18 years, 343 days.", for: .normal)
             default:
                 QuestionLabel.text = "Game ended."
+                scoreLabel.text = "Your score is: \(correct) / \(questionNumber + 1)"
+                scoreLabel.isHidden = false
                 questionNumber = 0
+                correct = 0
                 button1.isHidden = true
                 button2.isHidden = true
                 button3.isHidden = true
-                button4.setTitle("Start Over", for: .normal)
+                button4.isHidden = true
+                button5.isHidden = false
             }
         } else if category == "Movies" {
             switch questionNumber {
@@ -208,11 +258,15 @@ class NBAViewController: UIViewController {
                 button4.setTitle("Moana.", for: .normal)
             default:
                 QuestionLabel.text = "Game ended."
+                scoreLabel.text = "Your score is: \(correct) / \(questionNumber + 1)"
+                scoreLabel.isHidden = false
                 questionNumber = 0
+                correct = 0
                 button1.isHidden = true
                 button2.isHidden = true
                 button3.isHidden = true
-                button4.setTitle("Start Over", for: .normal)
+                button4.isHidden = true
+                button5.isHidden = false
             }
         } else if category == "Music" {
             switch questionNumber {
@@ -248,11 +302,15 @@ class NBAViewController: UIViewController {
                 button4.setTitle("Variation XII", for: .normal)
             default:
                 QuestionLabel.text = "Game ended."
+                scoreLabel.text = "Your score is: \(correct) / \(questionNumber + 1)"
+                scoreLabel.isHidden = false
                 questionNumber = 0
+                correct = 0
                 button1.isHidden = true
                 button2.isHidden = true
                 button3.isHidden = true
-                button4.setTitle("Start Over", for: .normal)
+                button4.isHidden = true
+                button5.isHidden = false
             }
         } else if category == "Science" {
             switch questionNumber {
@@ -288,11 +346,15 @@ class NBAViewController: UIViewController {
                 button4.setTitle("Around 372 700 km away", for: .normal)
             default:
                 QuestionLabel.text = "Game ended."
+                scoreLabel.text = "Your score is: \(correct) / \(questionNumber + 1)"
+                scoreLabel.isHidden = false
                 questionNumber = 0
+                correct = 0
                 button1.isHidden = true
                 button2.isHidden = true
                 button3.isHidden = true
-                button4.setTitle("Start Over", for: .normal)
+                button4.isHidden = true
+                button5.isHidden = false
             }
         }
         
