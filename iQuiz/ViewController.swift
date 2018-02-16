@@ -21,6 +21,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         categories = (UIApplication.shared.delegate as! AppDelegate).categoryRepository.getCategories()
         tblQuizCategories.dataSource = self
         tblQuizCategories.delegate = self
+        tblQuizCategories.estimatedRowHeight = 65
+        tblQuizCategories.rowHeight = UITableViewAutomaticDimension
+        tblQuizCategories.numberOfRows(inSection: 0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,9 +43,32 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
         cell.textLabel?.text = category.name
-        cell.imageView?.image = UIImage(named: "nba.png")
-        cell.detailTextLabel?.text = "Test detail here."
+        if category.name == "NBA" {
+            cell.imageView?.image = UIImage(named: "nba.png")
+            cell.detailTextLabel?.numberOfLines = 0
+            cell.detailTextLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+            cell.detailTextLabel?.text = "Test your skills on NBA trivia questions!"
+        } else if category.name == "Science" {
+            cell.imageView?.image = UIImage(named: "nba.png")
+            cell.detailTextLabel?.numberOfLines = 0
+            cell.detailTextLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+            cell.detailTextLabel?.text = "You think you can science?"
+        } else if category.name == "Music" {
+            cell.imageView?.image = UIImage(named: "nba.png")
+            cell.detailTextLabel?.numberOfLines = 0
+            cell.detailTextLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+            cell.detailTextLabel?.text = "How big of a music fan are you?"
+        } else if category.name == "Movies" {
+            cell.imageView?.image = UIImage(named: "nba.png")
+            cell.detailTextLabel?.numberOfLines = 0
+            cell.detailTextLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+            cell.detailTextLabel?.text = "Do you pay attention during movies?"
+        }
         return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 100.0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

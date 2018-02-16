@@ -14,8 +14,12 @@ class NBAAnswersViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        questionLabel.lineBreakMode = .byWordWrapping
+        questionLabel.numberOfLines = 0
         label.text = labelText
         numberRight.text = "\(String(correct)) / \(String(questionNumber+1))"
+        questionLabel.text = questionText
+        answerLabel.text = answerText
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,6 +38,10 @@ class NBAAnswersViewController: UIViewController {
     }
     */
 
+    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var answerLabel: UILabel!
+    var answerText : String = String()
+    var questionText : String = String()
     var questionNumber : Int = Int()
     var category : String = String()
     @IBOutlet weak var label: UILabel!
