@@ -45,25 +45,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.textLabel?.text = category.name
         if category.name == "NBA" {
             cell.imageView?.image = UIImage(named: "nba.png")
-            cell.detailTextLabel?.numberOfLines = 0
-            cell.detailTextLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
             cell.detailTextLabel?.text = "Test your skills on NBA trivia questions!"
         } else if category.name == "Science" {
-            cell.imageView?.image = UIImage(named: "nba.png")
-            cell.detailTextLabel?.numberOfLines = 0
-            cell.detailTextLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+            cell.imageView?.image = UIImage(named: "science.png")
             cell.detailTextLabel?.text = "You think you can science?"
         } else if category.name == "Music" {
-            cell.imageView?.image = UIImage(named: "nba.png")
-            cell.detailTextLabel?.numberOfLines = 0
-            cell.detailTextLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+            cell.imageView?.image = UIImage(named: "music.png")
             cell.detailTextLabel?.text = "How big of a music fan are you?"
         } else if category.name == "Movies" {
-            cell.imageView?.image = UIImage(named: "nba.png")
-            cell.detailTextLabel?.numberOfLines = 0
-            cell.detailTextLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+            cell.imageView?.image = UIImage(named: "movies.ico")
             cell.detailTextLabel?.text = "Do you pay attention during movies?"
         }
+        cell.detailTextLabel?.numberOfLines = 0
+        cell.detailTextLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        cell.detailTextLabel?.textColor = UIColor.purple
+        cell.detailTextLabel?.font = UIFont.italicSystemFont(ofSize: 12.0)
         return cell
     }
     

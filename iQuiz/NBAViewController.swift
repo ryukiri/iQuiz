@@ -19,6 +19,14 @@ class NBAViewController: UIViewController {
         QuestionLabel.lineBreakMode = .byWordWrapping
         QuestionLabel.numberOfLines = 0
         
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        self.view.addGestureRecognizer(swipeLeft)
+        
         if category == "NBA" {
             nbaQuestions = (UIApplication.shared.delegate as! AppDelegate).nbaRepository.getQuestions()
             var question = nbaQuestions![0]
@@ -168,6 +176,47 @@ class NBAViewController: UIViewController {
     @IBAction func button5Action(_ sender: Any) {
         let myVC = storyboard?.instantiateViewController(withIdentifier: "home") as! ViewController
         self.present(myVC, animated: true, completion: nil)
+    }
+    
+    @IBOutlet var swipe: UISwipeGestureRecognizer!
+    
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.left:
+                print("Swiped right")
+                let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaAnswers") as! NBAAnswersViewController
+                if rightWrong == 0 {
+                    myVC.questionNumber = questionNumber
+                    myVC.category = category
+                    myVC.correct = correct
+                    myVC.questionText = questionText
+                    myVC.answerText = answerText
+                    myVC.labelText = "Incorrect"
+                } else if rightWrong == 1 {
+                    correct += 1
+                    myVC.correct = correct
+                    myVC.questionText = questionText
+                    myVC.questionNumber = questionNumber
+                    myVC.answerText = answerText
+                    myVC.category = category
+                    myVC.labelText = "Correct"
+                }
+                self.present(myVC, animated: true, completion: nil)
+            case UISwipeGestureRecognizerDirection.down:
+                print("Swiped down")
+            case UISwipeGestureRecognizerDirection.right:
+                print("Swiped left")
+                questionNumber = 0
+                correct = 0
+                let myVC = storyboard?.instantiateViewController(withIdentifier: "home") as! ViewController
+                self.present(myVC, animated: true, completion: nil)
+            case UISwipeGestureRecognizerDirection.up:
+                print("Swiped up")
+            default:
+                break
+            }
+        }
     }
     
     @IBAction func submitButtonAction(_ sender: Any) {

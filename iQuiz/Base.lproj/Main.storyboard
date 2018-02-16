@@ -169,6 +169,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="CLx-Fs-3lW" firstAttribute="bottom" secondItem="HUs-eq-Ujy" secondAttribute="bottom" constant="20" id="4Ax-Bk-Zwk"/>
                             <constraint firstItem="CLx-Fs-3lW" firstAttribute="trailing" secondItem="xqh-ua-4IN" secondAttribute="trailing" constant="12" id="71L-hF-Pr5"/>
@@ -185,6 +186,9 @@
                             <constraint firstItem="CLx-Fs-3lW" firstAttribute="trailing" secondItem="Kfc-mY-WGe" secondAttribute="trailing" constant="20" id="vmh-QR-5wf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CLx-Fs-3lW"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="6FP-Ph-XeL" appends="YES" id="y0g-yl-6Ld"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="QuestionLabel" destination="xqh-ua-4IN" id="c0N-Fi-mOe"/>
@@ -195,9 +199,11 @@
                         <outlet property="button5" destination="d4B-qk-jgW" id="jTd-N4-0SW"/>
                         <outlet property="scoreLabel" destination="2SS-J2-THz" id="AiP-lh-NoY"/>
                         <outlet property="submitButton" destination="Kfc-mY-WGe" id="jpY-gg-F3d"/>
+                        <outlet property="swipe" destination="6FP-Ph-XeL" id="4rJ-m0-bPQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O5i-Fd-5SC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="6FP-Ph-XeL"/>
             </objects>
             <point key="canvasLocation" x="885.60000000000002" y="133.5832083958021"/>
         </scene>
