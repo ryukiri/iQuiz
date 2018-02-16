@@ -71,13 +71,14 @@ class NBAViewController: UIViewController {
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var button4: UIButton!
     @IBOutlet weak var button5: UIButton!
-    //var questionNumber = Int()
+    @IBOutlet weak var submitButton: UIButton!
     var questionNumber : Int = Int()
     let nbaQuestionRepo = NBARepository.shared
     var nbaQuestions : [Questions]? = nil
     var correctAnswer = 1;
     var category : String = String()
     var correct = 0;
+    var rightWrong = 0;
     
     /*
     // MARK: - Navigation
@@ -90,86 +91,74 @@ class NBAViewController: UIViewController {
     */
     
     @IBAction func button1Action(_ sender: Any) {
+        button1.backgroundColor = UIColor(red: 90/255, green: 200/255, blue: 250/255, alpha: 1.0)
+        button1.setTitleColor(UIColor.white, for: .normal)
+        button2.backgroundColor = UIColor.white
+        button2.setTitleColor(UIColor.blue, for: .normal)
+        button3.backgroundColor = UIColor.white
+        button3.setTitleColor(UIColor.blue, for: .normal)
+        button4.backgroundColor = UIColor.white
+        button4.setTitleColor(UIColor.blue, for: .normal)
         if correctAnswer == 1 {
             NSLog("You are correct.")
-            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaAnswers") as! NBAAnswersViewController
-            correct += 1
-            myVC.correct = correct
-            myVC.questionNumber = questionNumber
-            myVC.category = category
-            myVC.labelText = "Correct"
-            self.present(myVC, animated: true, completion: nil)
+            rightWrong = 1
         } else {
             NSLog("You are not correct.")
-            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaAnswers") as! NBAAnswersViewController
-            myVC.questionNumber = questionNumber
-            myVC.correct = correct
-            myVC.category = category
-            myVC.labelText = "Incorrect"
-            self.present(myVC, animated: true, completion: nil)
+            rightWrong = 0
         }
     }
     
     @IBAction func button2Action(_ sender: Any) {
+        button2.backgroundColor = UIColor(red: 90/255, green: 200/255, blue: 250/255, alpha: 1.0)
+        button2.setTitleColor(UIColor.white, for: .normal)
+        button1.backgroundColor = UIColor.white
+        button1.setTitleColor(UIColor.blue, for: .normal)
+        button3.backgroundColor = UIColor.white
+        button3.setTitleColor(UIColor.blue, for: .normal)
+        button4.backgroundColor = UIColor.white
+        button4.setTitleColor(UIColor.blue, for: .normal)
         if correctAnswer == 2 {
             NSLog("You are correct.")
-            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaAnswers") as! NBAAnswersViewController
-            correct += 1
-            myVC.correct = correct
-            myVC.questionNumber = questionNumber
-            myVC.category = category
-            myVC.labelText = "Correct"
-            self.present(myVC, animated: true, completion: nil)
+            rightWrong = 1
         } else {
             NSLog("You are not correct.")
-            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaAnswers") as! NBAAnswersViewController
-            myVC.questionNumber = questionNumber
-            myVC.correct = correct
-            myVC.category = category
-            myVC.labelText = "Incorrect"
-            self.present(myVC, animated: true, completion: nil)
+            rightWrong = 0
         }
     }
     
     @IBAction func button3Action(_ sender: Any) {
+        button3.backgroundColor = UIColor(red: 90/255, green: 200/255, blue: 250/255, alpha: 1.0)
+        button3.setTitleColor(UIColor.white, for: .normal)
+        button2.backgroundColor = UIColor.white
+        button2.setTitleColor(UIColor.blue, for: .normal)
+        button1.backgroundColor = UIColor.white
+        button1.setTitleColor(UIColor.blue, for: .normal)
+        button4.backgroundColor = UIColor.white
+        button4.setTitleColor(UIColor.blue, for: .normal)
         if correctAnswer == 3 {
             NSLog("You are correct.")
-            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaAnswers") as! NBAAnswersViewController
-            correct += 1
-            myVC.correct = correct
-            myVC.questionNumber = questionNumber
-            myVC.category = category
-            myVC.labelText = "Correct"
-            self.present(myVC, animated: true, completion: nil)
+            rightWrong = 1
         } else {
             NSLog("You are not correct.")
-            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaAnswers") as! NBAAnswersViewController
-            myVC.questionNumber = questionNumber
-            myVC.category = category
-            myVC.correct = correct
-            myVC.labelText = "Incorrect"
-            self.present(myVC, animated: true, completion: nil)
+            rightWrong = 0
         }
     }
     
     @IBAction func button4Action(_ sender: Any) {
+        button4.backgroundColor = UIColor(red: 90/255, green: 200/255, blue: 250/255, alpha: 1.0)
+        button4.setTitleColor(UIColor.white, for: .normal)
+        button2.backgroundColor = UIColor.white
+        button2.setTitleColor(UIColor.blue, for: .normal)
+        button3.backgroundColor = UIColor.white
+        button3.setTitleColor(UIColor.blue, for: .normal)
+        button1.backgroundColor = UIColor.white
+        button1.setTitleColor(UIColor.blue, for: .normal)
         if correctAnswer == 4 {
             NSLog("You are correct.")
-            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaAnswers") as! NBAAnswersViewController
-            correct += 1
-            myVC.correct = correct
-            myVC.questionNumber = questionNumber
-            myVC.category = category
-            myVC.labelText = "Correct"
-            self.present(myVC, animated: true, completion: nil)
+            rightWrong = 1
         } else {
             NSLog("You are not correct.")
-            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaAnswers") as! NBAAnswersViewController
-            myVC.questionNumber = questionNumber
-            myVC.category = category
-            myVC.correct = correct
-            myVC.labelText = "Incorrect"
-            self.present(myVC, animated: true, completion: nil)
+            rightWrong = 0
         }
     }
     
@@ -178,6 +167,22 @@ class NBAViewController: UIViewController {
         self.present(myVC, animated: true, completion: nil)
     }
     
+    @IBAction func submitButtonAction(_ sender: Any) {
+        let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaAnswers") as! NBAAnswersViewController
+        if rightWrong == 0 {
+            myVC.questionNumber = questionNumber
+            myVC.category = category
+            myVC.correct = correct
+            myVC.labelText = "Incorrect"
+        } else if rightWrong == 1 {
+            correct += 1
+            myVC.correct = correct
+            myVC.questionNumber = questionNumber
+            myVC.category = category
+            myVC.labelText = "Correct"
+        }
+        self.present(myVC, animated: true, completion: nil)
+    }
     
     func loadAnswerChoices() {
         if category == "NBA" {
@@ -223,6 +228,7 @@ class NBAViewController: UIViewController {
                 button3.isHidden = true
                 button4.isHidden = true
                 button5.isHidden = false
+                submitButton.isHidden = true
             }
         } else if category == "Movies" {
             switch questionNumber {
@@ -267,6 +273,7 @@ class NBAViewController: UIViewController {
                 button3.isHidden = true
                 button4.isHidden = true
                 button5.isHidden = false
+                submitButton.isHidden = true
             }
         } else if category == "Music" {
             switch questionNumber {
@@ -311,6 +318,7 @@ class NBAViewController: UIViewController {
                 button3.isHidden = true
                 button4.isHidden = true
                 button5.isHidden = false
+                submitButton.isHidden = true
             }
         } else if category == "Science" {
             switch questionNumber {
@@ -355,6 +363,7 @@ class NBAViewController: UIViewController {
                 button3.isHidden = true
                 button4.isHidden = true
                 button5.isHidden = false
+                submitButton.isHidden = true
             }
         }
         

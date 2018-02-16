@@ -111,8 +111,6 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z8P-Fv-5fH">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
-                                        <color key="backgroundColor" red="0.44244856057495913" green="0.57287620726027022" blue="0.55044762190635477" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="button1Action:" destination="TCt-2D-Q6D" eventType="touchUpInside" id="ab4-dK-gtq"/>
@@ -120,8 +118,6 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4c-hA-rs3">
                                         <rect key="frame" x="0.0" y="40" width="335" height="30"/>
-                                        <color key="backgroundColor" red="0.44244856059999998" green="0.5728762073" blue="0.55044762189999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="button2Action:" destination="TCt-2D-Q6D" eventType="touchUpInside" id="221-mc-4wu"/>
@@ -129,8 +125,6 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmG-DM-txU">
                                         <rect key="frame" x="0.0" y="80" width="335" height="30"/>
-                                        <color key="backgroundColor" red="0.44244856059999998" green="0.5728762073" blue="0.55044762189999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="button3Action:" destination="TCt-2D-Q6D" eventType="touchUpInside" id="h2H-Uo-DGs"/>
@@ -138,8 +132,6 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V40-OQ-6fF">
                                         <rect key="frame" x="0.0" y="120" width="335" height="30"/>
-                                        <color key="backgroundColor" red="0.44244856059999998" green="0.5728762073" blue="0.55044762189999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="button4Action:" destination="TCt-2D-Q6D" eventType="touchUpInside" id="3m2-N4-wNq"/>
@@ -161,6 +153,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kfc-mY-WGe">
+                                <rect key="frame" x="296" y="617" width="61" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitButtonAction:" destination="TCt-2D-Q6D" eventType="touchUpInside" id="6qS-ec-pQi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -184,6 +184,7 @@
                         <outlet property="button4" destination="V40-OQ-6fF" id="6Y5-za-g9q"/>
                         <outlet property="button5" destination="d4B-qk-jgW" id="jTd-N4-0SW"/>
                         <outlet property="scoreLabel" destination="2SS-J2-THz" id="AiP-lh-NoY"/>
+                        <outlet property="submitButton" destination="Kfc-mY-WGe" id="jpY-gg-F3d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O5i-Fd-5SC" userLabel="First Responder" sceneMemberID="firstResponder"/>
