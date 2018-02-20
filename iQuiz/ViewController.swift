@@ -143,6 +143,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 let details = try JSONDecoder().decode([CategoryQuizInfo].self, from: data)
                 for i in details {
                     self.repo.addCategories(category: i.title)
+                    print(i.questions[0])
+                    print("\n")
                 }
                 self.categories = self.repo.getCategories()
                 
