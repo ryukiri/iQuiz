@@ -67,7 +67,6 @@ class AnswerViewController: UIViewController {
             let myVC = storyboard?.instantiateViewController(withIdentifier: "gameOver") as! EndViewController
             myVC.correctNumber = correctNumber
             myVC.questionNumber = questionNumber
-            myVC.link = link
             self.present(myVC, animated: true, completion: nil)
         }
         

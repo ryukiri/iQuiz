@@ -1,0 +1,115 @@
+[
+    { "title":"NBA!",
+      "desc":"Test your skills on NBA trivia questions!",
+      "questions":[
+        {
+          "text":"Who was the 2013 All-Star MVP?",
+          "answer":"1",
+          "answers":[
+            "Chris Paul",
+            "Kobe Bryant",
+            "Lebron James",
+            "Carmelo Anthony"
+          ]
+        },
+        {
+          "text":"How many points did Kobe average in 2006?",
+          "answer":"1",
+          "answers":[
+            "31.6",
+            "33.1",
+            "32.6",
+            "36.2"
+          ]
+        }, 
+        {
+          "text":"Who holds the highest career free throw percentage?",
+          "answer":"4",
+          "answers":[
+            "Stephen Curry",
+            "Kobe Bryant",
+            "Ray Allen",
+            "Steve Nash"
+          ]
+        }, 
+        {
+          "text":"How many championships have the Los Angeles Lakers won?",
+          "answer":"1",
+          "answers":[
+            "16",
+            "12",
+            "15",
+            "18"
+          ]
+        }, 
+        {
+          "text":"Who was the most recent number 1 pick out of the University of Washington? And what team does he currently play on?",
+          "answer":"1",
+          "answers":[
+            "Markelle Fultz. Phoenix Suns.",
+            "Markelle Fultz. Minnesota Timberwolves",
+            "Markelle Fultz. Boston Celtics",
+            "Markelle Fultz. Philidelphia 76ers."
+          ]
+        }, 
+        {
+          "text":"Who is the youngest player to record a triple double and how long did it take?",
+          "answer":"1",
+          "answers":[
+            "Lebron James. 20 years, 10 days.",
+            "Lonzo Ball. 20 years, 15 days.",
+            "Magic Johnson. 19 years, 289 days.",
+            "Kobe Bryant. 18 years, 343 days."
+          ]
+        }
+      ]
+    },
+    { "title":"Movies", "desc": "Do you pay attention during movies?",
+      "questions":[
+        {
+          "text":"In how many languages is C-3PO fluent?",
+          "answer":"1",
+          "answers":[
+            "Over 6 million",
+            "4",
+            "Roughly 12 million",
+            "Nobody knows"
+          ]
+        },
+        {
+          "text":"Who was the original commander of the Death Star?",
+          "answer":"1",
+          "answers":[
+            "Grand Moff Tarkin",
+            "Admiral Motti",
+            "Grand Admiral Thrawn",
+            "Orson Krennic"
+          ]
+        },
+        {
+          "text":"Who was Bambi's best friend?",
+          "answer":"3",
+          "answers":[
+            "Hopper",
+            "Jumper",
+            "Thumper",
+            "Humper"
+          ]
+        }
+      ]
+    },
+    { "title":"Mathematics", "desc":"Did you pass the third grade?",
+      "questions":[
+         {
+           "text":"What is 2+2?",
+           "answer":"1",
+           "answers":[
+             "4",
+             "22",
+             "An irrational number",
+             "Nobody knows"
+           ]
+         }
+      ]
+   }
+]
