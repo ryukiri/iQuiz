@@ -7,18 +7,37 @@
 //
 
 import UIKit
+import Foundation
+
+struct CategoryQuizInfo: Decodable {
+    let title : String
+    let desc : String
+    let questions : [Question]
+}
+
+struct Question: Decodable {
+    let text : String
+    let answer : String
+    let answers : [String]
+}
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tblQuizCategories: UITableView!
+    let repo = QuizRepository()
     let categoryRepo = QuizRepository.shared
-    var categories : [Category]? = nil
+    var categories : [Category]?
     var category : String = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        categories = (UIApplication.shared.delegate as! AppDelegate).categoryRepository.getCategories()
+        //categories = (UIApplication.shared.delegate as! AppDelegate).categoryRepository.getCategories()
+        fetchJson()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // change 2 to desired number of seconds
+            // Your code with delay
+            self.tblQuizCategories.reloadData()
+        }
+
         tblQuizCategories.dataSource = self
         tblQuizCategories.delegate = self
         tblQuizCategories.estimatedRowHeight = 65
@@ -32,12 +51,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        NSLog("numberOfRowsInSection called")
+        //NSLog("numberOfRowsInSection called")
         return categories!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        NSLog("We are being asked for indexPath \(indexPath)()")
+        //NSLog("We are being asked for indexPath \(indexPath)()")
+        fetchJson()
         let index = indexPath.row
         let category = categories![index]
         
@@ -72,8 +92,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         NSLog("User selected row at \(category.name)")
         
         let alert = UIAlertController(title: "You selected", message: category.name, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "OK",
-                                         style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
         
         if category.name == "NBA" {
@@ -100,7 +119,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             myVC.category = "Movies"
             self.category = "Movies"
             self.present(myVC, animated: true, completion: nil)
-        } 
+        }
     }
     
     @IBAction func settings(_ sender: Any) {
@@ -109,6 +128,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                                          style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func fetchJson() {
+        categories = repo.getCategories()
+        let jsonUrlString = "https://tednewardsandbox.site44.com/questions.json"
+        guard let url = URL(string: jsonUrlString) else {
+            return
+        }
+        
+        URLSession.shared.dataTask(with:url) {(data, response, error) in
+            guard let data = data else {return}
+            do{
+                let details = try JSONDecoder().decode([CategoryQuizInfo].self, from: data)
+                for i in details {
+                    self.repo.addCategories(category: i.title)
+                }
+                self.categories = self.repo.getCategories()
+                
+            } catch let jsonError{
+                print(jsonError)
+            }
+        }.resume()
     }
 }
 

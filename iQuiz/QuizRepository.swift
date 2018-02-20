@@ -23,12 +23,18 @@ class QuizRepository {
     
     static let shared = QuizRepository()
     
-    private let categories : [Category] = [
-        Category(name: "NBA"),
+    public var categories : [Category] = [
+        /*Category(name: "NBA"),
         Category(name: "Science"),
         Category(name: "Music"),
-        Category(name: "Movies")
+        Category(name: "Movies")*/
     ]
+    
+    func addCategories(category: String) {
+        categories.append( Category(name: category) )
+        //print(categories)
+    }
+    
     
     func getCategories() -> [Category] {
         return categories
