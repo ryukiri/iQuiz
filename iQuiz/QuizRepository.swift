@@ -2,45 +2,33 @@
 //  QuizRepository.swift
 //  iQuiz
 //
-//  Created by Austin Quach on 2/10/18.
+//  Created by Austin Quach on 2/19/18.
 //  Copyright © 2018 Austin Quach. All rights reserved.
 //
 
 import Foundation
 
-class Category {
-    init(name : String) {
-        self.name = name
-    }
-    var name = ""
-}
-
 class QuizRepository {
-    // Create
-    // Retrieve
-    // Update
-    // Delete
-    
-    static let shared = QuizRepository()
-    
-    public var categories : [Category] = [
-        /*Category(name: "NBA"),
-        Category(name: "Science"),
-        Category(name: "Music"),
-        Category(name: "Movies")*/
-    ]
+    private var categories : [String] = [String]()
+    private var details : [String] = [String]()
     
     func addCategories(category: String) {
-        categories.append( Category(name: category) )
-        //print(categories)
+        categories.append(category)
     }
     
-    
-    func getCategories() -> [Category] {
+    func getCategories() -> [String] {
         return categories
     }
     
-    func getCategory(id: Int) -> Category {
+    func getCategory(id : Int) -> String {
         return categories[id]
+    }
+    
+    func addDetails(detail: String) {
+        details.append(detail)
+    }
+    
+    func getDetails() -> [String] {
+        return details
     }
 }

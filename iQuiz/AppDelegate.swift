@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  iQuiz
 //
-//  Created by Austin Quach on 2/5/18.
+//  Created by Austin Quach on 2/19/18.
 //  Copyright © 2018 Austin Quach. All rights reserved.
 //
 
@@ -13,12 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    let categoryRepository = QuizRepository()
-    let nbaRepository = NBARepository()
-    let movieRepository = MovieRepository()
-    let musicRepository = MusicRepository()
-    let scienceRepository = ScienceRepository()
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true

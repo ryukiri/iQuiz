@@ -2,47 +2,43 @@
 //  ViewController.swift
 //  iQuiz
 //
-//  Created by Austin Quach on 2/5/18.
+//  Created by Austin Quach on 2/19/18.
 //  Copyright © 2018 Austin Quach. All rights reserved.
 //
 
 import UIKit
-import Foundation
 
-struct CategoryQuizInfo: Decodable {
+struct CategoryQuizInfo : Decodable {
     let title : String
     let desc : String
     let questions : [Question]
 }
 
-struct Question: Decodable {
+struct Question : Decodable {
     let text : String
     let answer : String
     let answers : [String]
 }
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet weak var tblQuizCategories: UITableView!
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var tableViewQuizCategories: UITableView!
+    var categories : [String] = [""]
+    var details : [String] = [""]
+    var category : String = ""
     let repo = QuizRepository()
-    let categoryRepo = QuizRepository.shared
-    var categories : [Category]?
-    var category : String = String()
+    var questions : [CategoryQuizInfo] = [CategoryQuizInfo]()
+    var questionNumber : Int = 0
+    var categoryNumber : Int = 0
+    var correctNumber: Int = 0
+    var link = "https://tednewardsandbox.site44.com/questions.json"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //categories = (UIApplication.shared.delegate as! AppDelegate).categoryRepository.getCategories()
-        fetchJson()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // change 2 to desired number of seconds
-            // Your code with delay
-            self.tblQuizCategories.reloadData()
-        }
-
-        tblQuizCategories.dataSource = self
-        tblQuizCategories.delegate = self
-        tblQuizCategories.estimatedRowHeight = 65
-        tblQuizCategories.rowHeight = UITableViewAutomaticDimension
-        tblQuizCategories.numberOfRows(inSection: 0)
+        // Do any additional setup after loading the view, typically from a nib.
+        fetchJson(jsonUrl: link)
+        tableViewQuizCategories.dataSource = self
+        tableViewQuizCategories.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,30 +48,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //NSLog("numberOfRowsInSection called")
-        return categories!.count
+        return categories.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //NSLog("We are being asked for indexPath \(indexPath)()")
-        fetchJson()
         let index = indexPath.row
-        let category = categories![index]
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
-        cell.textLabel?.text = category.name
-        if category.name == "NBA" {
-            cell.imageView?.image = UIImage(named: "nba.png")
-            cell.detailTextLabel?.text = "Test your skills on NBA trivia questions!"
-        } else if category.name == "Science" {
-            cell.imageView?.image = UIImage(named: "science.png")
-            cell.detailTextLabel?.text = "You think you can science?"
-        } else if category.name == "Music" {
-            cell.imageView?.image = UIImage(named: "music.png")
-            cell.detailTextLabel?.text = "How big of a music fan are you?"
-        } else if category.name == "Movies" {
-            cell.imageView?.image = UIImage(named: "movies.ico")
-            cell.detailTextLabel?.text = "Do you pay attention during movies?"
-        }
+        let category = categories[index]
+        let detail = details[index]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tblViewCell", for: indexPath)
+        cell.textLabel?.text = category
+        cell.detailTextLabel?.text = detail
         cell.detailTextLabel?.numberOfLines = 0
         cell.detailTextLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         cell.detailTextLabel?.textColor = UIColor.purple
@@ -88,70 +71,67 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let category = categories![indexPath.row]
-        NSLog("User selected row at \(category.name)")
+        let category = categories[indexPath.row]
+        //NSLog("User selected row at \(category)")
+        categoryNumber = indexPath.row
         
-        let alert = UIAlertController(title: "You selected", message: category.name, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(cancelAction)
-        
-        if category.name == "NBA" {
-            NSLog("In NBA")
-            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaQuestions") as! NBAViewController
-            myVC.category = "NBA"
-            self.category = "NBA"
-            self.present(myVC, animated: true, completion: nil)
-        } else if category.name == "Science" {
-            NSLog("In Science")
-            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaQuestions") as! NBAViewController
-            myVC.category = "Science"
-            self.category = "Science"
-            self.present(myVC, animated: true, completion: nil)
-        } else if category.name == "Music" {
-            NSLog("In Movies")
-            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaQuestions") as! NBAViewController
-            myVC.category = "Music"
-            self.category = "Music"
-            self.present(myVC, animated: true, completion: nil)
-        } else if category.name == "Movies" {
-            NSLog("In Movies")
-            let myVC = storyboard?.instantiateViewController(withIdentifier: "nbaQuestions") as! NBAViewController
-            myVC.category = "Movies"
-            self.category = "Movies"
-            self.present(myVC, animated: true, completion: nil)
-        }
-    }
-    
-    @IBAction func settings(_ sender: Any) {
-        let alertController = UIAlertController(title: "Alert", message: "Settings go here", preferredStyle: .alert)
+        let alert = UIAlertController(title: "You selected", message: category, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "OK",
                                          style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
+        alert.addAction(cancelAction)
+        //self.present(alert, animated: true, completion: nil)
+        
+        var questionVC = self.storyboard?.instantiateViewController(withIdentifier: "questions") as! QuestionViewController
+        questionVC.categoryNumber = categoryNumber
+        questionVC.questionNumber = questionNumber
+        questionVC.questions = questions
+        questionVC.correctNumber = correctNumber
+        questionVC.link = link
+        self.present(questionVC, animated: true, completion: nil)
     }
     
-    func fetchJson() {
-        categories = repo.getCategories()
-        let jsonUrlString = "https://tednewardsandbox.site44.com/questions.json"
-        guard let url = URL(string: jsonUrlString) else {
-            return
-        }
+    func fetchJson(jsonUrl: String) {
+        let jsonUrlString = jsonUrl
+        guard let url = URL(string: jsonUrlString) else { return }
         
-        URLSession.shared.dataTask(with:url) {(data, response, error) in
-            guard let data = data else {return}
-            do{
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data else { return }
+            do {
                 let details = try JSONDecoder().decode([CategoryQuizInfo].self, from: data)
                 for i in details {
                     self.repo.addCategories(category: i.title)
-                    print(i.questions[0])
-                    print("\n")
+                    self.repo.addDetails(detail: i.desc)
                 }
-                self.categories = self.repo.getCategories()
+                self.questions = details
                 
-            } catch let jsonError{
-                print(jsonError)
+                self.categories = self.repo.getCategories()
+                self.details = self.repo.getDetails()
+                DispatchQueue.main.async{
+                    self.tableViewQuizCategories.reloadData()
+                }
+            } catch let e{
+                print(e)
             }
         }.resume()
+        
     }
+    
+    @IBAction func settingsButton(_ sender: Any) {
+        let alert = UIAlertController(title: "Settings", message: "Change URL", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.text = "Enter URL here"
+        }
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
+            self.fetchJson(jsonUrl: (textField?.text)!)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var qvc = segue.destination as! QuestionViewController
+    }
+
 }
 
