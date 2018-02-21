@@ -32,13 +32,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var questionNumber : Int = 0
     var categoryNumber : Int = 0
     var correctNumber: Int = 0
-    var link = "https://tednewardsandbox.site44.com/questions.json"
     //var link = "https://api.myjson.com/bins/g5fup"
+    var link = UserDefaults.standard.string(forKey: "url") ?? "https://tednewardsandbox.site44.com/questions.json"
     var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         fetchJson(link)
         tableViewQuizCategories.dataSource = self
         tableViewQuizCategories.delegate = self
@@ -128,9 +129,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         guard let url = URL(string: jsonUrlString) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data else { return }
+            guard let data = data else {
+                let alert = UIAlertController(title: "ERROR", message: "Please check URL", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            UserDefaults.standard.set(self.link, forKey: "url")
             do {
                 let details = try JSONDecoder().decode([CategoryQuizInfo].self, from: data)
+                self.repo.categories = [String]()
+                self.repo.details = [String]()
                 print(details)
                 for i in details {
                     self.repo.addCategories(category: i.title)
@@ -164,7 +173,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             (act: UIAlertAction) in
             if((urlTextField.text) != nil){
                 self.fetchJson(urlTextField.text!)
-                print(self.categories.count)
             }
         }))
         

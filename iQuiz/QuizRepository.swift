@@ -9,8 +9,8 @@
 import Foundation
 
 class QuizRepository {
-    private var categories : [String] = [String]()
-    private var details : [String] = [String]()
+    var categories : [String] = [String]()
+    var details : [String] = [String]()
     
     func addCategories(category: String) {
         categories.append(category)
