@@ -135,7 +135,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.present(alert, animated: true, completion: nil)
                 return
             }
-            UserDefaults.standard.set(self.link, forKey: "url")
+            UserDefaults.standard.set(jsonUrl, forKey: "url")
             do {
                 let details = try JSONDecoder().decode([CategoryQuizInfo].self, from: data)
                 self.repo.categories = [String]()
