@@ -32,8 +32,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var questionNumber : Int = 0
     var categoryNumber : Int = 0
     var correctNumber: Int = 0
-    //var link = "https://tednewardsandbox.site44.com/questions.json"
-    var link = "https://api.myjson.com/bins/g5fup"
+    var link = "https://tednewardsandbox.site44.com/questions.json"
+    //var link = "https://api.myjson.com/bins/g5fup"
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         fetchJson(link)
         tableViewQuizCategories.dataSource = self
         tableViewQuizCategories.delegate = self
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(reload), for: .valueChanged)
+        
+        // this is the replacement of implementing: "collectionView.addSubview(refreshControl)"
+        tableViewQuizCategories.refreshControl = refreshControl
+    }
+    
+    @objc func reload(refreshControl: UIRefreshControl) {
+        tableViewQuizCategories.reloadData()
+        
+        // somewhere in your code you might need to call:
+        refreshControl.endRefreshing()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -49,6 +63,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let alert = UIAlertController(title: "There is no internet connection.", message: "Your experience may be limited.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+            fetchLocalFile(file: "questions")
         } else {
             print("Internet")
         }
@@ -67,10 +82,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //NSLog("We are being asked for indexPath \(indexPath)()")
         let index = indexPath.row
-        print(indexPath.row)
         let category = categories[index]
         let detail = details[index]
         let cell = tableView.dequeueReusableCell(withIdentifier: "tblViewCell", for: indexPath)
+        cell.imageView?.image = UIImage(named: "icon.png")
         cell.textLabel?.text = category
         cell.detailTextLabel?.text = detail
         cell.detailTextLabel?.numberOfLines = 0
@@ -104,6 +119,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.present(questionVC, animated: true, completion: nil)
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
+    
     func fetchJson(_ jsonUrl: String) {
         let jsonUrlString = jsonUrl
         guard let url = URL(string: jsonUrlString) else { return }
@@ -112,6 +131,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             guard let data = data else { return }
             do {
                 let details = try JSONDecoder().decode([CategoryQuizInfo].self, from: data)
+                print(details)
                 for i in details {
                     self.repo.addCategories(category: i.title)
                     self.repo.addDetails(detail: i.desc)
@@ -174,6 +194,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let needsConnection = flags.contains(.connectionRequired)
         
         return (isReachable && !needsConnection)
+    }
+    
+    func fetchLocalFile(file: String){
+        do {
+            if let file = Bundle.main.url(forResource: "\(file)", withExtension: "json") {
+                let data = try Data(contentsOf: file)
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                if let object = json as? [Any] {
+                    // json is an array
+                    print("Object: \(object)")
+                } else {
+                    print("JSON is invalid")
+                }
+            } else {
+                print("no file")
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
     }
 
 }

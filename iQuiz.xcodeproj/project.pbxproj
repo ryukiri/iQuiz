@@ -16,6 +16,8 @@
 		D9AD78E3203C883B00ED18F8 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AD78E2203C883B00ED18F8 /* QuestionViewController.swift */; };
 		D9AD78E5203C885C00ED18F8 /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AD78E4203C885C00ED18F8 /* AnswerViewController.swift */; };
 		D9AD78E9203CD3AB00ED18F8 /* EndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AD78E8203CD3AB00ED18F8 /* EndViewController.swift */; };
+		D9AD78EC203D353B00ED18F8 /* questions.json in Resources */ = {isa = PBXBuildFile; fileRef = D9AD78EB203D353B00ED18F8 /* questions.json */; };
+		D9AD78F0203D5DE700ED18F8 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D9AD78EF203D5DE700ED18F8 /* icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		D9AD78E4203C885C00ED18F8 /* AnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
 		D9AD78E8203CD3AB00ED18F8 /* EndViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndViewController.swift; sourceTree = "<group>"; };
 		D9AD78EA203CF44700ED18F8 /* swiftStdLib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = swiftStdLib; sourceTree = "<group>"; };
+		D9AD78EB203D353B00ED18F8 /* questions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = questions.json; sourceTree = "<group>"; };
+		D9AD78EF203D5DE700ED18F8 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,10 +72,12 @@
 				D9AD78E4203C885C00ED18F8 /* AnswerViewController.swift */,
 				D9AD78E8203CD3AB00ED18F8 /* EndViewController.swift */,
 				D9AD78E0203BE40200ED18F8 /* QuizRepository.swift */,
+				D9AD78EB203D353B00ED18F8 /* questions.json */,
 				D9AD78E2203C883B00ED18F8 /* QuestionViewController.swift */,
 				D9304298203B90B300B4E823 /* ViewController.swift */,
 				D930429A203B90B300B4E823 /* Main.storyboard */,
 				D930429D203B90B300B4E823 /* Assets.xcassets */,
+				D9AD78EF203D5DE700ED18F8 /* icon.png */,
 				D930429F203B90B300B4E823 /* LaunchScreen.storyboard */,
 				D93042A2203B90B300B4E823 /* Info.plist */,
 			);
@@ -138,6 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D93042A1203B90B300B4E823 /* LaunchScreen.storyboard in Resources */,
+				D9AD78F0203D5DE700ED18F8 /* icon.png in Resources */,
+				D9AD78EC203D353B00ED18F8 /* questions.json in Resources */,
 				D930429E203B90B300B4E823 /* Assets.xcassets in Resources */,
 				D930429C203B90B300B4E823 /* Main.storyboard in Resources */,
 			);

@@ -33,6 +33,14 @@ class QuestionViewController: UIViewController {
         answer4Button.setTitle(questions[categoryNumber!].questions[questionNumber!].answers[3], for: .normal)
         questionRight = Int(questions[categoryNumber!].questions[questionNumber!].answer)!
         
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        self.view.addGestureRecognizer(swipeLeft)
+        
         // Do any additional setup after loading the view.
     }
 
@@ -129,6 +137,48 @@ class QuestionViewController: UIViewController {
         categoryNumber = 0
         let myVC = storyboard?.instantiateViewController(withIdentifier: "home") as! ViewController
         self.present(myVC, animated: true, completion: nil)
+    }
+    
+    @IBOutlet var swipe: UISwipeGestureRecognizer!
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.left:
+                print("Swiped right")
+                if chosenAnswer == -1 {
+                    let alert = UIAlertController(title: "No Selection", message: "Please select an answer to continue.", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    let answerVC = self.storyboard?.instantiateViewController(withIdentifier: "answers") as! AnswerViewController
+                    answerVC.answer = questions[categoryNumber!].questions[questionNumber!].answers[questionRight! - 1]
+                    answerVC.question = questionLabel.text!
+                    if questionRight == chosenAnswer {
+                        isCorrect = true
+                        correctNumber = correctNumber! + 1
+                    }
+                    answerVC.categoryNumber = categoryNumber
+                    answerVC.isCorrect = isCorrect
+                    answerVC.correctNumber = correctNumber!
+                    answerVC.questionNumber = questionNumber!
+                    answerVC.questions = questions
+                    self.present(answerVC, animated: true, completion: nil)
+                }
+            case UISwipeGestureRecognizerDirection.down:
+                print("Swiped down")
+            case UISwipeGestureRecognizerDirection.right:
+                print("Swiped left")
+                questionNumber = 0
+                categoryNumber = 0
+                let myVC = storyboard?.instantiateViewController(withIdentifier: "home") as! ViewController
+                self.present(myVC, animated: true, completion: nil)
+            case UISwipeGestureRecognizerDirection.up:
+                print("Swiped up")
+            default:
+                break
+            }
+        }
     }
     
 }
