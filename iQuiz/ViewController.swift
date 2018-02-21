@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SystemConfiguration
 
 struct CategoryQuizInfo : Decodable {
     let title : String
@@ -31,16 +32,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var questionNumber : Int = 0
     var categoryNumber : Int = 0
     var correctNumber: Int = 0
-    var link = "https://tednewardsandbox.site44.com/questions.json"
+    //var link = "https://tednewardsandbox.site44.com/questions.json"
+    var link = "https://api.myjson.com/bins/g5fup"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        fetchJson(jsonUrl: link)
+        fetchJson(link)
         tableViewQuizCategories.dataSource = self
         tableViewQuizCategories.delegate = self
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        if connectedToNetwork() == false {
+            print("No Internet")
+            let alert = UIAlertController(title: "There is no internet connection.", message: "Your experience may be limited.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            print("Internet")
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -54,6 +67,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //NSLog("We are being asked for indexPath \(indexPath)()")
         let index = indexPath.row
+        print(indexPath.row)
         let category = categories[index]
         let detail = details[index]
         let cell = tableView.dequeueReusableCell(withIdentifier: "tblViewCell", for: indexPath)
@@ -90,7 +104,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.present(questionVC, animated: true, completion: nil)
     }
     
-    func fetchJson(jsonUrl: String) {
+    func fetchJson(_ jsonUrl: String) {
         let jsonUrlString = jsonUrl
         guard let url = URL(string: jsonUrlString) else { return }
         
@@ -117,20 +131,49 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @IBAction func settingsButton(_ sender: Any) {
-        let alert = UIAlertController(title: "Settings", message: "Change URL", preferredStyle: .alert)
-        alert.addTextField { (textField) in
-            textField.text = "Enter URL here"
+        let alert = UIAlertController(title: "Settings", message: "Enter Data URL", preferredStyle: UIAlertControllerStyle.alert)
+        var urlTextField: UITextField = UITextField()
+        
+        alert.addTextField { (textField: UITextField) in
+            urlTextField = textField
+            urlTextField.placeholder = "Enter url here"
         }
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-            let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
-            self.fetchJson(jsonUrl: (textField?.text)!)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Check now", style: UIAlertActionStyle.default, handler:{
+            (act: UIAlertAction) in
+            if((urlTextField.text) != nil){
+                self.fetchJson(urlTextField.text!)
+                print(self.categories.count)
+            }
         }))
+        
         self.present(alert, animated: true, completion: nil)
     }
     
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var qvc = segue.destination as! QuestionViewController
+    func connectedToNetwork() -> Bool {
+        
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        guard let defaultRouteReachability = withUnsafePointer(to: &zeroAddress, {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+                SCNetworkReachabilityCreateWithAddress(nil, $0)
+            }
+        }) else {
+            return false
+        }
+        
+        var flags: SCNetworkReachabilityFlags = []
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
+            return false
+        }
+        
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        
+        return (isReachable && !needsConnection)
     }
 
 }

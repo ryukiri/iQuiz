@@ -30,6 +30,7 @@
 		D9AD78E2203C883B00ED18F8 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		D9AD78E4203C885C00ED18F8 /* AnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
 		D9AD78E8203CD3AB00ED18F8 /* EndViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndViewController.swift; sourceTree = "<group>"; };
+		D9AD78EA203CF44700ED18F8 /* swiftStdLib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = swiftStdLib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +47,7 @@
 		D930428A203B90B300B4E823 = {
 			isa = PBXGroup;
 			children = (
+				D9AD78EA203CF44700ED18F8 /* swiftStdLib */,
 				D9304295203B90B300B4E823 /* iQuiz */,
 				D9304294203B90B300B4E823 /* Products */,
 			);

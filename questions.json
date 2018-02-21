@@ -44,7 +44,7 @@
         }, 
         {
           "text":"Who was the most recent number 1 pick out of the University of Washington? And what team does he currently play on?",
-          "answer":"1",
+          "answer":"4",
           "answers":[
             "Markelle Fultz. Phoenix Suns.",
             "Markelle Fultz. Minnesota Timberwolves",
@@ -54,7 +54,7 @@
         }, 
         {
           "text":"Who is the youngest player to record a triple double and how long did it take?",
-          "answer":"1",
+          "answer":"2",
           "answers":[
             "Lebron James. 20 years, 10 days.",
             "Lonzo Ball. 20 years, 15 days.",
@@ -95,21 +95,101 @@
             "Thumper",
             "Humper"
           ]
+        },
+        {
+          "text":"What footwear was Anna wearing throughout most of the movie?",
+          "answer":"2",
+          "answers":[
+            "Heels",
+            "Boots",
+            "Sandals",
+            "Sneakers"
+          ]
+        }, 
+        {
+          "text":"What happened to Tiana's father?",
+          "answer":"2",
+          "answers":[
+            "He's on a trip",
+            "He died",
+            "He left the family",
+            "He is in the army"
+          ]
+        },
+        {
+          "text": "\"Whatever just happened, blame it on the pig.\" is said by:",
+          "answer":"3",
+          "answers":[
+            "Maui",
+            "Gramma Tala",
+            "Chief Tui",
+            "Moana"
+          ]
         }
       ]
     },
-    { "title":"Mathematics", "desc":"Did you pass the third grade?",
+    { "title":"Music", "desc":"How big of a music fan are you?",
       "questions":[
          {
-           "text":"What is 2+2?",
-           "answer":"1",
-           "answers":[
-             "4",
-             "22",
-             "An irrational number",
-             "Nobody knows"
-           ]
-         }
+          "text":"Who is the leader of BTS?",
+          "answer":"3",
+          "answers":[
+            "J-Hope",
+            "V",
+            "RM",
+            "Suga"
+          ]
+        },
+        {
+          "text":"What is the 14th song on the Starboy Album by The Weeknd?",
+          "answer":"1",
+          "answers":[
+            "Ordinary Life",
+            "False Alarm",
+            "Attention",
+            "There is no 14th song."
+          ]
+        },
+        {
+          "text":"Where was Tritonia 150 held?",
+          "answer":"2",
+          "answers":[
+            "Seattle",
+            "Washington DC",
+            "Chicago",
+            "Los Angeles"
+          ]
+        },
+        {
+          "text":"Which of these artists did not perform at EDC 2017?",
+          "answer":"4",
+          "answers":[
+            "Illenium",
+            "Marshmello",
+            "Porter Robinson",
+            "Tritonal"
+          ]
+        }, 
+        {
+          "text":"How many solo number 1 singles did Michael Jackson have?",
+          "answer":"4",
+          "answers":[
+            "15",
+            "8",
+            "13",
+            "11"
+          ]
+        },
+        {
+          "text": "Which of Elgar's Enigma Variations was partially inspired by a bulldog?",
+          "answer":"3",
+          "answers":[
+            "Variation IX",
+            "Variation I",
+            "Variation XI",
+            "Variation I"
+          ]
+        }
       ]
    }
 ]
